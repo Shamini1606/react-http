@@ -1,285 +1,3 @@
-// // import { useEffect, useState } from "react";
-// // import "./App.css";
-// // import { json } from "react-router-dom";
-
-// // import { Button, EditableText, InputGroup, Toaster } from "@blueprintjs/core";
-// // import { web } from "webpack";
-
-// // const AppToaster = Toaster.create({
-// //   position: "top",
-// // });
-
-// // function App() {
-// //   const [users, setUsers] = useState([]);
-// //   const [newName, setNewName] = useState("");
-// //   const [newEmail, setNewEmail] = useState("");
-// //   const [newWebsite, setNewWebsite] = useState("");
-
-// //   useEffect(() => {
-// //     fetch("https://jsonplaceholder.typicode.com/users")
-// //       .then((response) => response.json())
-// //       .then((json) => setUsers(json));
-// //   }, []);
-
-// //   function addUser() {
-// //     const name = newName.trim();
-// //     const email = newEmail.trim();
-// //     const website = newWebsite.trim();
-
-// //     if (name && email && website) {
-// //       fetch("https://jsonplaceholder.typicode.com/users", {
-// //         method: "POST",
-// //         body: JSON.stringify({
-// //           name,
-// //           email,
-// //           website,
-// //         }),
-// //         headers: {
-// //           "Content-Type": "application/json charset=UTF-8 ",
-// //         },
-// //       })
-// //         .then((response) => response.json())
-// //         .then((data) => {
-// //           setUsers([...users, data]);
-// //           AppToaster.show({
-// //             message: "user added successfully",
-// //             intent: "success",
-// //             timeout: 3000,
-// //           });
-// //         });
-// //     }
-// //   }
-
-// //   return (
-// //     <div className="App">
-// //       <table className="bp4-html-table modifier">
-// //         <thead>
-// //           <th>ID</th>
-// //           <th>Name</th>
-// //           <th>Email</th>
-// //           <th>Website</th>
-// //           <th>Action</th>
-// //         </thead>
-// //         <tbody>
-// //           {users.map((user) => (
-// //             <tr key={user.id}>
-// //               <td>{user.id}</td>
-// //               <td>{user.name}</td>
-// //               <td>
-// //                 <EditableText value={user.email} />
-// //               </td>
-// //               <td>
-// //                 <EditableText value={user.website} />
-// //               </td>
-// //               <td>
-// //                 <Button intent="primary">Update</Button>
-// //                 <Button intent="danger">Delete</Button>
-// //               </td>
-// //             </tr>
-// //           ))}
-// //         </tbody>
-// //         <tfoot>
-// //           <tr>
-// //             <td></td>
-// //             <td>
-// //               <InputGroup
-// //                 value={newName}
-// //                 onChange={(e) => setNewName(e.target.value)}
-// //                 placeholder="Enter Name..."
-// //               />
-// //             </td>
-// //             <td>
-// //               <InputGroup
-// //                 value={newEmail}
-// //                 onChange={(e) => setNewEmail(e.target.value)}
-// //                 placeholder="Enter Email..."
-// //               />
-// //             </td>
-// //             <td>
-// //               <InputGroup
-// //                 value={newWebsite}
-// //                 onChange={(e) => setNewWebsite(e.target.value)}
-// //                 placeholder="Enter Website..."
-// //               />
-// //             </td>
-// //             <td>
-// //               <Button intent="success" onClick={addUser}>
-// //                 Add User
-// //               </Button>
-// //             </td>
-// //           </tr>
-// //         </tfoot>
-// //       </table>
-// //     </div>
-// //   );
-// // }
-
-// // export default App;
-
-// import { useEffect, useState } from "react";
-// import "./App.css";
-// import { Button, EditableText, InputGroup, Toaster } from "@blueprintjs/core";
-
-// const AppToaster = Toaster.create({
-//   position: "top",
-// });
-
-// function App() {
-//   const [users, setUsers] = useState([]);
-//   const [newName, setNewName] = useState("");
-//   const [newEmail, setNewEmail] = useState("");
-//   const [newWebsite, setNewWebsite] = useState("");
-
-//   useEffect(() => {
-//     fetch("https://jsonplaceholder.typicode.com/users")
-//       .then((response) => response.json())
-//       .then((json) => setUsers(json));
-//   }, []);
-
-//   function addUser() {
-//     const name = newName.trim();
-//     const email = newEmail.trim();
-//     const website = newWebsite.trim();
-
-//     if (name && email && website) {
-//       fetch("https://jsonplaceholder.typicode.com/users", {
-//         method: "POST",
-//         body: JSON.stringify({
-//           name,
-//           email,
-//           website,
-//         }),
-//         headers: {
-//           "Content-Type": "application/json; charset=UTF-8",
-//         },
-//       })
-//         .then((response) => response.json())
-//         .then((data) => {
-//           setUsers([...users, data]);
-//           AppToaster.show({
-//             message: "User added successfully",
-//             intent: "success",
-//             timeout: 3000, // Corrected type
-//           });
-//           setNewName("");
-//           setNewEmail("");
-//           setNewWebsite("");
-//         });
-//     }
-//   }
-
-//   function onchangeHandler(id, key, value) {
-//     setUsers((users) => {
-//       users.map((user) => {
-//         return user.id === id ? { ...user, [key]: value } : user;
-//       });
-//     });
-//   }
-
-//   // Update user function
-//   function updateUser(id) {
-//     const user = users.find((user) => user.id === id);
-
-//     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-//       method: "PUT",
-//       body: JSON.stringify(user),
-//       headers: {
-//         "Content-Type": "application/json; charset=UTF-8",
-//       },
-//     })
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setUsers([...users, data]);
-//         AppToaster.show({
-//           message: "User updated successfully",
-//           intent: "success",
-//           timeout: 3000, // Corrected type
-//         });
-//       });
-//   }
-
-//   return (
-//     <div className="App">
-//       <table className="bp4-html-table modifier">
-//         <thead>
-//           <tr>
-//             {" "}
-//             {/* Added missing <tr> */}
-//             <th>ID</th>
-//             <th>Name</th>
-//             <th>Email</th>
-//             <th>Website</th>
-//             <th>Action</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {users.map((user) => (
-//             <tr key={user.id}>
-//               <td>{user.id}</td>
-//               <td>{user.name}</td>
-//               <td>
-//                 <EditableText
-//                   onChange={(value) => onchangeHandler(user.id, "email", value)}
-//                   value={user.email}
-//                 />{" "}
-//                 {/* Corrected interpolation */}
-//               </td>
-//               <td>
-//                 <EditableText
-//                   onChange={(value) =>
-//                     onchangeHandler(user.id, "website, value")
-//                   }
-//                   value={user.website}
-//                 />{" "}
-//                 {/* Corrected interpolation */}
-//               </td>
-//               <td>
-//                 <Button intent="primary" onClick={() => updateUser(user.id)}>
-//                   Update
-//                 </Button>
-//                 <Button intent="danger">Delete</Button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//         <tfoot>
-//           <tr>
-//             <td></td>
-//             <td>
-//               <InputGroup
-//                 value={newName}
-//                 onChange={(e) => setNewName(e.target.value)}
-//                 placeholder="Enter Name..."
-//               />
-//             </td>
-//             <td>
-//               <InputGroup
-//                 value={newEmail}
-//                 onChange={(e) => setNewEmail(e.target.value)}
-//                 placeholder="Enter Email..."
-//               />
-//             </td>
-//             <td>
-//               <InputGroup
-//                 value={newWebsite}
-//                 onChange={(e) => setNewWebsite(e.target.value)}
-//                 placeholder="Enter Website..."
-//               />
-//             </td>
-//             <td>
-//               <Button intent="success" onClick={addUser}>
-//                 Add User
-//               </Button>
-//             </td>
-//           </tr>
-//         </tfoot>
-//       </table>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Button, EditableText, InputGroup, Toaster } from "@blueprintjs/core";
@@ -352,7 +70,8 @@ function App() {
   function updateUser(id) {
     const user = users.find((user) => user.id === id);
 
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+    // fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+    fetch(`https://jsonplaceholder.typicode.com/users/10`, {
       method: "PUT",
       body: JSON.stringify(user),
       headers: {
@@ -371,6 +90,23 @@ function App() {
         });
       });
   }
+
+  // Delete function
+  function deleteUser(id) {
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id)); // Correct filter function
+        AppToaster.show({
+          message: "User deleted successfully",
+          intent: "success",
+          timeout: 3000,
+        });
+      });
+  }
+  
 
   return (
     <div className="App">
@@ -410,7 +146,9 @@ function App() {
                   <Button intent="primary" onClick={() => updateUser(user.id)}>
                     Update
                   </Button>
-                  <Button intent="danger">Delete</Button>
+                  <Button intent="danger" onClick={() => deleteUser(user.id)}>
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))}
