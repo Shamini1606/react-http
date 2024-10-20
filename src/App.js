@@ -106,7 +106,6 @@ function App() {
         });
       });
   }
-  
 
   return (
     <div className="App">
@@ -146,6 +145,7 @@ function App() {
                   <Button intent="primary" onClick={() => updateUser(user.id)}>
                     Update
                   </Button>
+                  &nbsp;
                   <Button intent="danger" onClick={() => deleteUser(user.id)}>
                     Delete
                   </Button>
